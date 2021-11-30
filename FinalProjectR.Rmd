@@ -1,0 +1,76 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Loading in the .csv
+
+```{r}
+grades_data <- read.csv("C:\\Users\\brend\\Downloads\\archive\\StudentsPerformance.csv")
+```
+
+```{r}
+math_scores <- grades_data$math.score
+reading_scores <- grades_data$reading.score
+writing_scores <- grades_data$writing.score
+hist(math_scores,
+     main="Scores of Math Section",
+     xlab="Percentage out of 100",
+     xlim=c(0,100),
+     col="red")
+hist(reading_scores,
+     main="Scores of Math Section",
+     xlab="Percentage out of 100",
+     xlim=c(0,100),
+     col="blue")
+hist(writing_scores,
+     main="Scores of Math Section",
+     xlab="Percentage out of 100",
+     xlim=c(0,100),
+     col="green")
+```
+
+Finding Mean
+
+```{r}
+
+math_mean <- mean(math_scores)
+
+reading_mean <- mean(reading_scores)
+
+writing_mean <- mean(writing_scores)
+print(paste("Mean of scores for math was: ", math_mean))
+print(paste("Mean of scores for reading was: ", reading_mean))
+print(paste("Mean of scores for writing was: ", writing_mean))
+
+```
+
+Finding Median
+
+```{r}
+math_median <- median(math_scores)
+reading_median <- median(math_scores)
+writing_median <- median(writing_scores)
+print(paste("Median of scores for math was: ", math_median))
+print(paste("Median of scores for reading was: ", reading_median))
+print(paste("Median of scores for writing was: ", writing_median))
+```
+
+Finding Mode
+
+```{r}
+
+mode_func <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+math_mode <- mode_func(math_scores)
+reading_mode <- mode_func(math_scores)
+writing_mode <- mode_func(writing_scores)
+print(paste("Mode of scores for math was: ", math_mode))
+print(paste("Mode of scores for reading was: ", reading_mode))
+print(paste("Mode of scores for writing was: ", writing_mode))
+
+```
+
